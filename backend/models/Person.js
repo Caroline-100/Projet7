@@ -1,8 +1,7 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../databbase/sequelize");
-//creating a table
+const Sequelize = require('sequelize');
+const sequelize = require('../databbase/sequelize');
 
-const Person = sequelize.define("Person", {
+const Person = sequelize.define('Person', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -20,7 +19,6 @@ const Person = sequelize.define("Person", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  // Column: Timestamps
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,
 });

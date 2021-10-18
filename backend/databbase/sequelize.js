@@ -1,26 +1,27 @@
-const Sequelize = require("sequelize");
-const dotenv = require("dotenv");
-dotenv.config();
+const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
 
-//CONNECT TO DATABASE USE VARIABLES ENVIRONNEMENT
-const database = "Groupomania";
-const username = "postgres";
-const password = "123postgre";
-const host = "127.0.0.1";
-const port = 3001;
-const dialect = "postgres";
+dotenv.config();
+// CONNECT TO DATABASE USE VARIABLES ENVIRONNEMENT
+const database = process.env.DB_NAME;
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
+const host = process.env.DB_HOST;
+const port = process.env.DB_PORT;
+const dialect = process.env.DB_DIALECT;
 console.log(
-  // process.env.DATABASE,
-  { username },
+  'TEST', { username },
+  { database },
   { password },
   { host },
-  { port }
+  { port },
+  { dialect },
 );
 
 const sequelize = new Sequelize(database, username, password, {
-  host: host,
-  port: port,
-  dialect: dialect,
+  host,
+  port,
+  dialect,
 
   pool: {
     max: 5,
@@ -32,10 +33,11 @@ const sequelize = new Sequelize(database, username, password, {
 sequelize
   .authenticate()
   .then(() => {
-    console.log("Connection is established correctly");
+    console.log('Connection is established correctly');
   })
   .catch((err) => {
-    console.error("Connection is not established correctly");
+    console.error('Connection is not established correctly');
+    console.error(err);
   });
 
 module.exports = sequelize;
