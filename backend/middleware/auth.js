@@ -7,12 +7,6 @@ const authenfication = function auth(req, res, next) {
     const detoken = jwt.verify(token, 'Random_Secret_token');
 
     const { userId } = detoken;
-    // if (new Date(iat) > new Date()) { TODO: verify validity??
-    //   res.status(401).json({
-    //     error: new Error('Expired Token'),
-    //   });
-    //   return;
-    // }
 
     if (!req.context) {
       req.context = {};
