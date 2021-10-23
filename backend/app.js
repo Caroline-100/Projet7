@@ -2,6 +2,9 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+// const file_System = require('file-system');
+// const multer = require('./middleware/multer');
 const authenfication = require('./middleware/auth');
 const {
   Person,
@@ -21,9 +24,10 @@ app.use((req, res, next) => {
   );
   next();
 });
-
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // app.use("/api/auth", userRouter);
 app.get('/', (request, response) => {
   Person.findOne()
@@ -63,7 +67,6 @@ app.post('/signup', (req, res) => {
       });
   }
 });
-
 // app.put("/users/:id", async (req, res, next) => {
 //   const updatedUser = await db.Person.update(
 //     { email: req.body.email },
@@ -78,6 +81,17 @@ app.post('/signup', (req, res) => {
 
 // // .update({ email: req.body.email }, { where: { id: req.body.id } })
 
+// app.get('/setcookie', (req, res) => {
+//   res.cookie('Cookie token name`,a, {
+//     maxAge: 5000,
+//     // expires works the same as the maxAge
+//     expires: new Date('01 12 2021'),
+//     secure: true,
+//     httpOnly: true,
+//     sameSite: 'lax',
+//   });
+//   res.send('Cookie have been saved successfully');
+// });
 app.post('/login', (req, res) => Person.findOne({
   where: {
     username: req.body.username,
@@ -91,18 +105,17 @@ app.post('/login', (req, res) => Person.findOne({
     }
     // check if pass are founded in db and request.
     console.log('mdp :', req.body.password, user, user.dataValues.id);
-    //use bcrypt for compare password exists
+    // use bcrypt for compare password exists
     return bcrypt
       .compare(req.body.password, user.dataValues.password)
-      //promise if is bcript is good
+      // promise if is bcript is good
       .then((valid) => {
-        //assign a token of validation at user_id, 
+        // assign a token of validation at user_id,
         const accessToken = jwt.sign(
           { userId: user.dataValues.id },
           'Random_Secret_token',
           { expiresIn: '24h' },
         );
-        // if compare is not valid : message error
         if (!valid) {
           return res.status(401).json({ message: 'password invalid' });
         }
@@ -118,13 +131,18 @@ app.post('/login', (req, res) => Person.findOne({
   .catch((error) => {
     res.send(error);
   }));
-
 // post articles with authenfication and add id of in database posts
 app.post('/posts', authenfication, (req, res) => {
+  // if (req.file) {
+  //   console.log('file');
+  // } else {
+  //   console.error('no req.file');
+  // }
   Post.create({
     text: req.body.text,
     PersonId: req.context.userId,
   })
+  // data:`${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
   // if the post is created return a json postCreated
     .then((postCreated) => {
       console.log({ postCreated });
