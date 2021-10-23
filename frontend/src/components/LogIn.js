@@ -1,4 +1,7 @@
+
 import React from "react";
+
+
 class LogIn extends React.Component {
   constructor() {
     super();
@@ -19,15 +22,19 @@ class LogIn extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
+
     console.log("this is", data);
-    fetch("http://localhost:3004/login", {
+    const newLocal = 'http://localhost:3004/login';
+    fetch(newLocal, {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers:{ 
+        "Content-type": "application/json" },
       body: JSON.stringify(data),
-    }).then(() => {
-      console.log("goods reconnect");
-      // window.location.href = "/main";
-    });
+    }).then(response => response.json())
+      .then((token)=> 
+        { const datatoken = token;
+          localStorage.setItem('datee', datatoken);
+        }) 
   }
 
   render() {

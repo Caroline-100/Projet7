@@ -11,6 +11,7 @@ import checkboxdisplay from "./components/chekboxdisplay";
 import LogINorLogOUT from "./components/LogINorLogOUT";
 import Fetching from "./components/fetching";
 import CreatePost from "./components/createPost";
+
 class App extends React.Component {
   render() {
     return (
@@ -23,7 +24,7 @@ class App extends React.Component {
         <Route path="/Check" exact component={checkboxdisplay} />
         <Route path="/LogINorLogOUT" exact component={LogINorLogOUT} />
         <Route path="/Fetching" exact component={Fetching} />
-        <Route path="/CreatePost" exact component={CreatePost} />
+        <Route path="/CreatePost" exact component={CreatePost} />        
       </BrowserRouter>
     );
   }

@@ -11,6 +11,9 @@ const Post = sequelize.define('Post', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  // data: {
+  //   type: Sequelize.BLOB('long'),
+  // },
 });
 
 module.exports = Post;

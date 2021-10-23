@@ -1,4 +1,5 @@
 import React from "react";
+// some other file
 
 class CreatePost extends React.Component {
   constructor() {
@@ -17,18 +18,23 @@ class CreatePost extends React.Component {
   }
   submitPost(event) {
     event.preventDefault();
-    const posts = { post: this.state.post };
-    console.log("this is a post", posts);
+    const posts = this.state.post;
+    console.log({posts});
+    const transformPost = JSON.stringify(posts);
+    const token = localStorage.getItem('datee');
+    console.log({token});
+    console.log({transformPost});
     fetch("http://localhost:3004/posts", {
       method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(posts),
-    }).then(() => {
-      console.log(" new Post ", posts);
-      // window.location.href = "/main";
-    });
-    //     const data = { post: this.state.post };
-    //     console.log("this is ", data);
+      credentials:'same-origin',
+      headers: {authorization:'Bearer ' + token,'Content-Type' :'application/json' },
+      mode:'cors',
+      body: JSON.stringify({text : `${posts}`}),
+    })
+    .then((response) => {
+        console.log(" new Post ", response);
+      })
+      .catch((error)=> console.error(error))
   }
   render() {
     return (

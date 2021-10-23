@@ -5,9 +5,9 @@ const authenfication = function auth(req, res, next) {
     const token = req.headers.authorization.split(' ')[1];
     console.log({ token });
     const detoken = jwt.verify(token, 'Random_Secret_token');
-
+    console.log({ detoken });
     const { userId } = detoken;
-
+    console.log({ userId });
     if (!req.context) {
       req.context = {};
     }
