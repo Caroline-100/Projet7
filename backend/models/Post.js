@@ -7,12 +7,16 @@ const Post = sequelize.define('Post', {
     primaryKey: true,
     autoIncrement: true,
   },
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   text: {
     type: Sequelize.STRING,
     allowNull: false,
   },
   data: {
-    type: Sequelize.BLOB('long'),
+    type: Sequelize.STRING,
   },
 });
 
