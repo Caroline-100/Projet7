@@ -76,13 +76,11 @@ label {
 
 .article-top {
   /* background-color: rgb(127, 167, 219); */
-  width: 300px;
-  height: 200px;
-  background-image: url('./image/lizard-6072391_640.jpeg');
-  background-repeat: no-repeat;
+  /* width: 300px;
+  height: 200px; */
   background-size: contain;
   border: solid #8160FB 1px;
-  color: cyan;
+  color: black;
   border-radius: 2em;
   box-shadow: #61D9FB 6px 8px;
   display: flex;
@@ -124,4 +122,7 @@ label {
 
 img {
   max-width: 350px;
+}
+.displayPosts {
+  background-color: #61D9FB;
 }
