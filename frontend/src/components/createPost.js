@@ -6,6 +6,7 @@ class CreatePost extends React.Component {
   constructor() {
     super();
     this.state = {
+      title:"",
       post: "",
       image:null,
 
@@ -25,6 +26,8 @@ class CreatePost extends React.Component {
   submitPost(event) {
     event.preventDefault();
     const posts = this.state.post;
+    const title = this.state.title;
+    console.log({title});
     console.log({posts});
     const token = localStorage.getItem('datee');
     console.log({token});
@@ -33,7 +36,7 @@ class CreatePost extends React.Component {
       credentials:'same-origin',
       headers: {authorization:'Bearer ' + token,'Content-Type' :'application/json' },
       mode:'cors',
-      body: JSON.stringify({text : `${posts}`}),
+      body: JSON.stringify({text : `${posts}`, title : `${title}`}),
     })
     .then((response) => {
       console.log(" new Post ", response);
@@ -76,6 +79,15 @@ class CreatePost extends React.Component {
     return (
       <div>
         <form onSubmit={this.submitPost}>
+
+        <label htmlFor="post"> Title Post : </label>
+          <textarea
+           type="title"
+           id="title"
+           value={this.state.title}
+           name="title"
+            onChange={this.handleChangePost}
+            ></textarea> 
           <label htmlFor="post"> Post : </label>
           <textarea
             type="post"
