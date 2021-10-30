@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../databbase/sequelize');
 
-const Person = sequelize.define('Person', {
+const People = sequelize.define('People', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -23,4 +23,4 @@ const Person = sequelize.define('Person', {
   updatedAt: Sequelize.DATE,
 });
 
-module.exports = Person;
+module.exports = People;

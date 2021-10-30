@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const {
-  Person,
+  People,
 } = require('../models');
 
 exports.signup = (req, res) => {
@@ -15,7 +15,7 @@ exports.signup = (req, res) => {
     bcrypt
       .hash(req.body.password, 10)
       .then((hash) => {
-        Person.create({
+        People.create({
           email: req.body.email,
           username: req.body.username,
           password: hash,
@@ -35,7 +35,7 @@ exports.signup = (req, res) => {
   }
 };
 
-exports.login = (req, res) => Person.findOne({
+exports.login = (req, res) => People.findOne({
   where: {
     username: req.body.username,
     // password: req.body.password,
@@ -76,7 +76,7 @@ exports.login = (req, res) => Person.findOne({
   });
 
 exports.oneUser = (request, response) => {
-  Person.findOne()
+  People.findOne()
     .then((users) => {
       response.json(users);
     })
@@ -86,7 +86,7 @@ exports.oneUser = (request, response) => {
 };
 
 exports.allUser = (req, res) => {
-  Person.findAll()
+  People.findAll()
     .then((users) => {
       res.json(users);
     })

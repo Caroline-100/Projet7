@@ -1,22 +1,22 @@
 const sequelize = require('../databbase/sequelize');
-const Person = require('./Person');
+const People = require('./People');
 const Post = require('./Post');
 const Comments = require('./Comments');
 
-Person.hasMany(Post, {
+People.hasMany(Post, {
   foreignKey: {
     allowNull: false,
   },
 });
-Post.belongsTo(Person);
+Post.belongsTo(People);
 
-Person.hasMany(Comments, {
+People.hasMany(Comments, {
   foreignKey: {
     allowNull: false,
   },
 
 });
-Comments.belongsTo(Person);
+Comments.belongsTo(People);
 
 Post.hasMany(Comments, {
   foreignKey: {
@@ -37,7 +37,7 @@ Comments.belongsTo(Post);
 //   });
 
 module.exports = {
-  Person,
+  People,
   Post,
   Comments,
 };
