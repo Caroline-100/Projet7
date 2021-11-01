@@ -46,7 +46,7 @@ class DisplayPosts extends React.Component {
 
         render() {
         return (
-            <div className="displayPosts" >
+            <div >
                 <ul>
                 {this.state.array}
                 </ul>
