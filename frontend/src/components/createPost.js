@@ -52,52 +52,35 @@ class CreatePost extends React.Component {
   }
   clickchange(event) {
     console.log(event.target);
-    console.log("something");
   }
-  // submitImage(event) {
-  //   event.preventDefault();
-  //   // const files = event.target;
-  //   const token = localStorage.getItem('datee');
-  //   var myheaders = new Headers();
-  //   myheaders.append('Accept','application/json');
-  //   myheaders.append('authorization',`Bearer ${token}`)
-  //   const formdata = new FormData();
-  //   formdata.append('file', this.state.image);
-  //   console.log(this.state.image);
-
-  //   fetch("http://localhost:3004/images", {
-  //     method: "POST",
-  //     headers:myheaders,
-  //     body:formdata,
-  //     redirect:'follow',
-  //   })
-  //   .then(response => response.json())
-  //   .then(result => console.log(result))
-  //   .catch(error => console.log('error', error));
-  // }
   render() {
     return (
-      <div>
-        <form onSubmit={this.submitPost}>
+      <div className='form'>
+        <form className='form-div'
+         onSubmit={this.submitPost}>
 
-        <label htmlFor="post"> Title Post : </label>
-          <textarea
+        <label className='title' htmlFor="post"> Create a Post : </label>
+          <input
            type="title"
+           placeholder="title"
            id="title"
+           className='name'
            value={this.state.title}
            name="title"
             onChange={this.handleChangePost}
-            ></textarea> 
-          <label htmlFor="post"> Post : </label>
+            /> 
+          <label className='title'
+          htmlFor="post"> Post : </label>
           <textarea
             type="post"
             id="post"
+            placeholder="Texte"
             value={this.state.post}
             name="post"
              onChange={this.handleChangePost}
           ></textarea>
           <p>{this.state.post}</p>
-          <button>Send Post</button>
+          <button>Publish</button>
         </form>
         <form onSubmit={this.submitImage}
         >

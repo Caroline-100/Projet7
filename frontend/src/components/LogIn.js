@@ -40,7 +40,7 @@ class LogIn extends React.Component {
   render() {
     return (
       <main className="log">
-        <h3>Login in to your account</h3>
+        <h3 className='title'>Login in to your account</h3>
         <form onSubmit={this.submit}>
           <div className="form-div">
             <label htmlFor="name">Username</label>
@@ -54,9 +54,6 @@ class LogIn extends React.Component {
               size="100"
               onChange={this.handleChange}
             />
-            <p>
-              {this.state.password} ,{this.state.username}
-            </p>
           </div>
           <div className="form-div">
             <label htmlFor="name">Password</label>
@@ -71,7 +68,7 @@ class LogIn extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div>
+          <div className="div-btn-valid-register">
             <input
               name="login"
               className="input-Valid"
@@ -80,6 +77,9 @@ class LogIn extends React.Component {
             />
           </div>
         </form>
+        <p>
+              {this.state.password} ,{this.state.username}
+        </p>
       </main>
     );
   }
