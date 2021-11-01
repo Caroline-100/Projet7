@@ -5,6 +5,7 @@ const app = express();
 
 const userRoute = require('./routes/user');
 const postRoute = require('./routes/post');
+const commentRoute = require('./routes/comment');
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', userRoute);
 app.use('/', postRoute);
+app.use('/', commentRoute);
 
 module.exports = app;
 
