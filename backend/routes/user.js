@@ -5,8 +5,10 @@ const controllers = require('../controllers/user');
 const authenfication = require('../middleware/auth');
 
 // api find one user
+// route GET
 router.get('/', controllers.oneUser);
 router.get('/user', authenfication, controllers.allUser);
+// route POST
 router.post('/signup', controllers.signup);
 router.post('/login', controllers.login);
 
