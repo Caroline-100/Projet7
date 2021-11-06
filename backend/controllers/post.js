@@ -26,10 +26,12 @@ exports.findAlls = (req, res) => {
 
 // create a post
 exports.createPost = (req, res) => {
+  console.log('data', req.body.data);
   Post.create({
     title: req.body.title,
     text: req.body.text,
     PersonId: req.context.userId,
+    data: req.body.data,
   })
   // if the post is created return a json postCreated
     .then((postCreated) => {
