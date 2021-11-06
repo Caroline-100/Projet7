@@ -5,10 +5,14 @@ body {
 /* navbar */
 
 .navbar {
-  background-color: #FB8160;
+  background-color: #6F1E30;
   width: 100%;
   text-align: center;
   font-size: 5.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding-top: 1em;
   padding-bottom: 1em;
 }
@@ -18,45 +22,92 @@ body {
 /* page login and Signp */
 
 .log {
-  background-color: #FB8160;
-  width: 20%;
-  padding-left: 5em;
-  padding-right: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #6F1E30;
   margin: auto;
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 1px 0px 4px 1px #61D9FB;
-  margin-top: 7em;
-  border-radius: .8em;
-}
+  margin-top: 150px;
+  width: 50%;
+  border-radius: 10px;
 
+}
 .form-div {
+
+
   display: flex;
   flex-direction: column;
-  padding-bottom: 1.5em;
-  border-radius: .6em;
+  max-width: 300px;
 }
-
-.name {
-  padding-bottom: .5em;
+/* input name */
+.name, .username, .password {
+  font-size: 16px;
+  height: 25px;
+  padding: 6px 10px 3px 6px;
 }
 
 label {
-  padding-bottom: .4em;
+padding: 10px 0px 7px 6px;
 }
-
-.input-Valid {
-  padding-top: .4em;
-  padding-bottom: .4em;
-  width: 100%;
-  margin-top: 1.3em;
-  margin-bottom: 3em;
-  border-radius: .6em;
-  border: 1px solid #61D9FB;
+.div-btn-valid-register {
+  display: flex;
+  padding: 10px 0px 7px 6px;
+  justify-content: center;
+  margin-top: 20px;
+  
 }
-
 /* end page login and Signp */
+
+/* create a post  */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: silver;
+  padding: 50px 0px 50px 0px;
+}
+/* create a post  */
+.input-Valid {
+  display: flex;
+  align-items: center;
+  border-radius: 6px 6px 6px 6px ;
+  padding: 8px 10px 8px 10px ;
+  font-size: 16px;
+  background-color: #6F1E30;
+}
+.post {
+  display: flex;
+  justify-content: center; 
+}
+.card-title {
+  text-decoration:underline;
+}
+.card-body {
+  border: 12px solid #4B4F78;
+
+}
+textarea{
+  resize: vertical;
+}
+
+.comments_text {
+  resize: vertical;
+}
+.comments_space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+/* title post */
+
+.title {
+
+  color: #101112;
+  font-weight: bold;
+  font-size: 22px;
+}
+
 
 /* Popular */
 
@@ -79,17 +130,45 @@ label {
   /* width: 300px;
   height: 200px; */
   background-size: contain;
-  border: solid #8160FB 1px;
+  border: solid #6F1E30 1px;
   color: black;
   border-radius: 2em;
-  box-shadow: #61D9FB 6px 8px;
+  box-shadow: rgb(154, 178, 201) 6px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 350px;
+  flex-direction: column;
+  max-width: 350px;
+  padding: 30px 30px 30px 30px;
+  text-align: center;
+  margin: auto;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px 30px 30px;
+}
+li{
+  list-style: none;
+  margin-bottom: 30px;
+}
+.inherited{
+
+  font-size: initial;
+  text-align: center;
 }
 
+.buttons  {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+
+}
 .top-Share {
-  background-color: #FB8160;
+  background-color: #6F1E30;
+  
 }
 
 .top-comment {
@@ -107,7 +186,7 @@ label {
 /* bottom articles */
 
 .Share {
-  background-color: #FB8160;
+  background-color: #6F1E30;
   border-radius: 5px;
   padding: .8em;
   margin: 1em;
@@ -125,4 +204,24 @@ img {
 }
 .displayPosts {
   background-color: #61D9FB;
+}
+
+@media only screen and (max-width: 600px) {
+  .log
+   {
+      width: 100%;
+   }
+  .navbar{
+  background-color: #6F1E30;
+  padding-top: 5px;
+  font-size: 50px;
+  height: 2em;
+
+  width: 100%;
+  }
+
+  .mob {
+    font-size: 50px;
+  }
+
 }
