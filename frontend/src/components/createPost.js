@@ -1,7 +1,8 @@
 
 import React from "react";
 // some other file
-
+import Image from 'react-bootstrap/Image';
+import { Col,Button } from "react-bootstrap";
 class CreatePost extends React.Component {
   constructor() {
     super();
@@ -25,9 +26,12 @@ class CreatePost extends React.Component {
   }
   submitPost(event) {
     event.preventDefault();
+    const image = this.state.image;
     const posts = this.state.post;
     const title = this.state.title;
     console.log({title});
+    console.log(image);
+    console.log(window.location.href);
     console.log({posts});
     const token = localStorage.getItem('datee');
     console.log({token});
@@ -36,7 +40,7 @@ class CreatePost extends React.Component {
       credentials:'same-origin',
       headers: {authorization:'Bearer ' + token,'Content-Type' :'application/json' },
       mode:'cors',
-      body: JSON.stringify({text : `${posts}`, title : `${title}`}),
+      body: JSON.stringify({text : `${posts}`, title : `${title}`, data: `${image}`}),
     })
     .then((response) => {
       console.log(" new Post ", response);
@@ -46,8 +50,9 @@ class CreatePost extends React.Component {
   handleImage(event) {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
-      console.log("image", img);
-      this.setState({ image: img})
+      var url = URL.createObjectURL(img);
+      console.log(url);
+      this.setState({ image: url})
     }
   }
   clickchange(event) {
@@ -80,15 +85,19 @@ class CreatePost extends React.Component {
              onChange={this.handleChangePost}
           ></textarea>
           <p>{this.state.post}</p>
-          <button>Publish</button>
+          <Button>Publish</Button>
         </form>
-        <form onSubmit={this.submitImage}
+        <form onSubmit={this.submitPost}
         >
           <input type='file' id='file' name='image' 
           multiple
           onChange={this.handleImage}
           />
-          <button onClick={this.clickchange}>Send image</button>
+          <Col xs={6} md={4}>
+          <Image src={this.state.image} rounded
+          alt='test'/>
+          </Col>
+          <Button onClick={this.clickchange}>Send image</Button>
         </form>
       </div>
     );
