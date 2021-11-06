@@ -34,12 +34,13 @@ class SignUp extends React.Component {
   render() {
     return (
       <main className="log">
-        <h3>Sign in to your account</h3>
+        <h3 className='title'>Sign in to your account</h3>
         <form onSubmit={this.submit}>
           <div className="form-div">
             <label htmlFor="name">Email</label>
             <input
               type="email"
+              placeholder="Email"
               className="name"
               value={this.state.email}
               name="email"
@@ -48,9 +49,6 @@ class SignUp extends React.Component {
               size="100"
               onChange={this.handleChange}
             />
-            <p>
-              {this.state.email} , {this.state.password} , {this.state.username}
-            </p>
           </div>
           {/* form username */}
           <div className="form-div">
@@ -58,6 +56,7 @@ class SignUp extends React.Component {
             <input
               htmlFor="username"
               name="username"
+              placeholder="Username"
               type="username"
               value={this.state.username}
               className="username"
@@ -66,7 +65,7 @@ class SignUp extends React.Component {
               size="30"
               autoComplete="true"
               onChange={this.handleChange}
-            />
+              />
           </div>
 
           <div className="form-div">
@@ -74,6 +73,7 @@ class SignUp extends React.Component {
             <input
               htmlFor="password"
               name="password"
+              placeholder="Password"
               type="password"
               value={this.state.password}
               className="password"
@@ -82,17 +82,20 @@ class SignUp extends React.Component {
               size="10"
               autoComplete="true"
               onChange={this.handleChange}
-            />
+              />
           </div>
-          <div>
+          <div className="div-btn-valid-register">
             <input
               name="register"
               className="input-Valid"
               type="submit"
               value="Valid"
-            ></input>
+              />
           </div>
         </form>
+              <p>
+                {this.state.email} , {this.state.password} , {this.state.username}
+              </p>
       </main>
     );
   }
