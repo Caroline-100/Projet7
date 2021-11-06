@@ -10,6 +10,6 @@ router.post('/posts', authenfication, controllers.createPost);
 
 // route GET
 router.get('/posts/:id', authenfication, controllers.findPost);
-router.get('/post', authenfication, controllers.findAlls);
+router.get('/posts', authenfication, controllers.findAlls);
 // router.get('/id');
 module.exports = router;
