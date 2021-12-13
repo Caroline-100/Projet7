@@ -1,6 +1,6 @@
 const { Comments, Post } = require('../models');
 // all comments
-exports.findComments = (req, res) => {
+const findComments = (req, res) => {
   Comments.findAll().then((comment) => {
     res.json(comment);
   }).catch((err) => {
@@ -8,7 +8,7 @@ exports.findComments = (req, res) => {
   });
 };
 // one comment by id
-exports.findComment = (req, res) => {
+const findComment = (req, res) => {
   Comments.findOne(
     {
       where: { id: req.params.id },
@@ -20,7 +20,7 @@ exports.findComment = (req, res) => {
   });
 };
 // ex: All comments of Post 1
-exports.getPostComments = (req, res) => {
+const getPostComments = (req, res) => {
   Post.findOne(
     {
       where: { id: req.params.id },
@@ -37,7 +37,7 @@ exports.getPostComments = (req, res) => {
   });
 };
 
-exports.createComment = (req, res) => {
+const createComment = (req, res) => {
   console.log(req.params);
   Comments.create({
     text: req.body.text,
@@ -55,4 +55,8 @@ exports.createComment = (req, res) => {
       console.error(error);
       res.sendStatus(400);
     });
+};
+
+module.exports = {
+  createComment, getPostComments, findComment, findComments,
 };

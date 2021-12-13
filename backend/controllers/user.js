@@ -6,7 +6,7 @@ const {
   People,
 } = require('../models');
 
-exports.signup = (req, res) => {
+const signup = (req, res) => {
   if (!req.body) {
     res.status(400).send({
       message: ' Content can not be empty',
@@ -35,7 +35,7 @@ exports.signup = (req, res) => {
   }
 };
 
-exports.login = (req, res) => People.findOne({
+const login = (req, res) => People.findOne({
   where: {
     username: req.body.username,
     // password: req.body.password,
@@ -75,17 +75,24 @@ exports.login = (req, res) => People.findOne({
     res.send(error);
   });
 
-exports.oneUser = (request, response) => {
-  People.findOne()
-    .then((users) => {
-      response.json(users);
+const oneUser = (request, response) => {
+  People.findOne({ where: { id: request.params.id } })
+    .then(() => {
+      console.log('one user', request.params.id);
+      People.destroy({ where: { id: request.params.id } })
+        .then(() => {
+          response.status(200).json({ message: 'Delete People' });
+        })
+        .catch((error) => {
+          response.status(400).json({ error });
+        });
     })
     .catch((err) => {
       console.error(err);
     });
 };
 
-exports.allUser = (req, res) => {
+const allUser = (req, res) => {
   People.findAll()
     .then((users) => {
       res.json(users);
@@ -93,4 +100,19 @@ exports.allUser = (req, res) => {
     .catch((err) => {
       console.error(err);
     });
+};
+
+// const deleteUser = (req, res) => {
+//   People.findOne({ id: req.params.id })
+//     .then((users) => {
+//       res.json(users);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// };
+
+
+module.exports = {
+  allUser, oneUser, login, signup,
 };
