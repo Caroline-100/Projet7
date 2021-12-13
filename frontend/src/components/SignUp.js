@@ -1,4 +1,5 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 class SignUp extends React.Component {
   constructor() {
     super();
@@ -9,11 +10,21 @@ class SignUp extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
-    // this.componentDidMount = this.componentDidMount.bind(this);
+    this.switchPage = this.switchPage.bind(this);
   }
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  }
+
+  switchPage(event) {
+    console.log(this.state.password === '');
+    if (this.state.password === '') {
+      const text = document.createElement('p');
+      text.innerHTML = `Loading ....`
+      // < Link to = '/Signup' > validate</Link >
+      console.log("click button", event.target);
+    }
   }
   submit(event) {
     event.preventDefault();
@@ -28,7 +39,10 @@ class SignUp extends React.Component {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(data),
-    }).then(() => console.log("goods start"));
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error)
+      })
   }
 
   render() {
@@ -65,7 +79,7 @@ class SignUp extends React.Component {
               size="30"
               autoComplete="true"
               onChange={this.handleChange}
-              />
+            />
           </div>
 
           <div className="form-div">
@@ -82,20 +96,26 @@ class SignUp extends React.Component {
               size="10"
               autoComplete="true"
               onChange={this.handleChange}
-              />
+            />
           </div>
           <div className="div-btn-valid-register">
+
             <input
               name="register"
+              onClick={this.switchPage}
               className="input-Valid"
               type="submit"
               value="Valid"
-              />
+
+            />
+            {
+              (this.state.password) ?
+                console.log('test')
+                :
+                console.log('else')
+            }
           </div>
         </form>
-              <p>
-                {this.state.email} , {this.state.password} , {this.state.username}
-              </p>
       </main>
     );
   }

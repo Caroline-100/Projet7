@@ -32,7 +32,7 @@ class Main extends React.Component {
   //   return (
   //     <div>
   //       <button onClick={this.OnClickBtn} className="top-Share">
-  //         Share <i class="fas fa-bullhorn"></i>
+  //         Share <i className="fas fa-bullhorn"></i>
   //       </button>
   //       <button className="top-comment">
   //         Comment <i className="fas fa-comment"></i>
