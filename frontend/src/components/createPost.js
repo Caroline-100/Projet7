@@ -1,22 +1,17 @@
-
 import React from "react";
-// some other file
-import Image from 'react-bootstrap/Image';
-import { Col,Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 class CreatePost extends React.Component {
   constructor() {
     super();
     this.state = {
-      title:"",
+      title: "",
       post: "",
-      image:null,
-
-    };
+      image: [],
+      imageTest: null,
+    }
     this.handleChangePost = this.handleChangePost.bind(this);
-    this.submitPost = this.submitPost.bind(this);
-    this.handleImage = this.handleImage.bind(this);
-    // this.submitImage = this.submitImage.bind(this);
-    this.clickChange = this.clickchange.bind(this);
+
+
   }
   handleChangePost(event) {
     const { name, value } = event.target;
@@ -24,83 +19,51 @@ class CreatePost extends React.Component {
       [name]: value,
     });
   }
-  submitPost(event) {
+  submit(event) {
     event.preventDefault();
-    const image = this.state.image;
-    const posts = this.state.post;
-    const title = this.state.title;
-    console.log({title});
-    console.log(image);
-    console.log(window.location.href);
-    console.log({posts});
-    const token = localStorage.getItem('datee');
-    console.log({token});
-    fetch("http://localhost:3004/posts", {
-      method: "POST",
-      credentials:'same-origin',
-      headers: {authorization:'Bearer ' + token,'Content-Type' :'application/json' },
-      mode:'cors',
-      body: JSON.stringify({text : `${posts}`, title : `${title}`, data: `${image}`}),
-    })
-    .then((response) => {
-      console.log(" new Post ", response);
-    })
-    .catch((error)=> console.error(error))
+
+    console.log('submit');
   }
-  handleImage(event) {
-    if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      var url = URL.createObjectURL(img);
-      console.log(url);
-      this.setState({ image: url})
-    }
-  }
-  clickchange(event) {
-    console.log(event.target);
-  }
+
+
+
+
   render() {
     return (
-      <div className='form'>
-        <form className='form-div'
-         onSubmit={this.submitPost}>
-
-        <label className='title' htmlFor="post"> Create a Post : </label>
-          <input
-           type="title"
-           placeholder="title"
-           id="title"
-           className='name'
-           value={this.state.title}
-           name="title"
-            onChange={this.handleChangePost}
-            /> 
-          <label className='title'
-          htmlFor="post"> Post : </label>
-          <textarea
-            type="post"
-            id="post"
-            placeholder="Texte"
-            value={this.state.post}
+      <div>
+        <form onSubmit={this.submit}>
+          <label>
+            <input onChange={this.handleChangePost}
+              type='title'
+              name='title'
+              placeholder='title'
+              value={this.state.title} />
+          </label>
+          <label>
+            <textarea onChange={this.handleChangePost}
+              type='post'
+              name='post'
+              placeholder='post'
+              value={this.state.post}>
+            </textarea>
+          </label>
+          <label>
+            <input
+              type='file'
+              name='file'
+            />
+          </label>
+          <Button variant='success'
             name="post"
-             onChange={this.handleChangePost}
-          ></textarea>
-          <p>{this.state.post}</p>
-          <Button>Publish</Button>
-        </form>
-        <form onSubmit={this.submitPost}
-        >
-          <input type='file' id='file' name='image' 
-          multiple
-          onChange={this.handleImage}
-          />
-          <Col xs={6} md={4}>
-          <Image src={this.state.image} rounded
-          alt='test'/>
-          </Col>
-          <Button onClick={this.clickchange}>Send image</Button>
+            className="input-Valid"
+            type="submit"
+            value="Valid"
+          >Valid</Button>
         </form>
       </div>
-    );
+    )
   }
 }
+
 export default CreatePost;
+
