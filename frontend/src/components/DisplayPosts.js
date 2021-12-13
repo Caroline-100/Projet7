@@ -1,5 +1,7 @@
 import React from "react"
 import Articles from './Articles'
+import LogINorLogOUT from "./LogINorLogOUT";
+
 
 
 class DisplayPosts extends React.Component {
@@ -9,10 +11,10 @@ class DisplayPosts extends React.Component {
             array: [],
             loading: true,
             post: {
-                id:null,
-                data:null,
-                createdAt:null,
-                updateAt:null,
+                id: null,
+                data: null,
+                createdAt: null,
+                updateAt: null,
             }
         }
     }
@@ -20,42 +22,43 @@ class DisplayPosts extends React.Component {
 
         const option = {};
         const token = localStorage.getItem('datee');
-        option.headers = {authorization : `Bearer ${token}`,   }
+        option.headers = { authorization: `Bearer ${token}`, }
         const url = 'http://localhost:3004/posts';
         const response = await fetch(url, option);
 
         const data = await response.json();
         console.log(data);
-        const arra =  data.map((user) => {
+        const arra = data.map((user) => {
 
-            return <Articles key={user.id.toString()} 
-                    id={user.id}text={user.text}
-                    updatedAt={user.updatedAt}
-                    data={user.data}
-                    PersonId={user.PersonId} 
-                    createdAt={user.createdAt} />
+            return (
+
+                // {/* key={user.id.toString() } */}
+                <div key={user.id.toString()} >
+                    <Articles
+                        title={user.title}
+                        id={user.id}
+                        text={user.text}
+                        updatedAt={user.updatedAt}
+                        createdAt={user.createdAt}
+                        data={user.data}
+                        PersonId={user.PersonId} />
+                </div >
+            )
         })
         this.setState({
             array: arra,
         })
     }
-    // componentWillUnmount() {
-    //     localStorage.clear()
-    //  //    if(!localStorage.getItem('datee')) {
-    //  //      this.props.history.push('/Login')
-    //  //    }
-    //  }
 
-        render() {
+    render() {
         return (
-            <div >
+            <div>
                 <ul>
-                {this.state.array}
+                    {this.state.array}
                 </ul>
-                {/* <button onClick={this.logout}>
-          LogOut
-        </button> */}
-            </div> 
+                <LogINorLogOUT />
+
+            </div>
         )
     }
 }
