@@ -8,6 +8,8 @@ const authenfication = require('../middleware/auth');
 // route GET
 router.get('/', controllers.oneUser);
 router.get('/user', authenfication, controllers.allUser);
+router.delete('/user/:id', authenfication, controllers.oneUser);
+
 // route POST
 router.post('/signup', controllers.signup);
 router.post('/login', controllers.login);
