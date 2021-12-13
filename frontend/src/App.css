@@ -26,12 +26,14 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #6F1E30;
+  color: wheat;
   margin: auto;
   margin-top: 150px;
   width: 50%;
   border-radius: 10px;
 
 }
+
 .form-div {
 
 
@@ -39,6 +41,7 @@ body {
   flex-direction: column;
   max-width: 300px;
 }
+
 /* input name */
 .name, .username, .password {
   font-size: 16px;
@@ -47,15 +50,17 @@ body {
 }
 
 label {
-padding: 10px 0px 7px 6px;
+  padding: 10px 0px 7px 6px;
 }
+
 .div-btn-valid-register {
   display: flex;
   padding: 10px 0px 7px 6px;
   justify-content: center;
   margin-top: 20px;
-  
+
 }
+
 /* end page login and Signp */
 
 /* create a post  */
@@ -66,39 +71,47 @@ padding: 10px 0px 7px 6px;
   background-color: silver;
   padding: 50px 0px 50px 0px;
 }
+
 /* create a post  */
 .input-Valid {
   display: flex;
   align-items: center;
-  border-radius: 6px 6px 6px 6px ;
-  padding: 8px 10px 8px 10px ;
+  border-radius: 6px 6px 6px 6px;
+  padding: 8px 10px 8px 10px;
   font-size: 16px;
   background-color: #6F1E30;
+  color: wheat;
 }
+
 .post {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
+
 .card-title {
-  text-decoration:underline;
+  text-decoration: underline;
 }
+
 .card-body {
   border: 12px solid #4B4F78;
 
 }
-textarea{
+
+textarea {
   resize: vertical;
 }
 
 .comments_text {
   resize: vertical;
 }
+
 .comments_space {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
+
 /* title post */
 
 .title {
@@ -126,9 +139,6 @@ textarea{
 /* end section top popular*/
 
 .article-top {
-  /* background-color: rgb(127, 167, 219); */
-  /* width: 300px;
-  height: 200px; */
   background-size: contain;
   border: solid #6F1E30 1px;
   color: black;
@@ -144,31 +154,35 @@ textarea{
   text-align: center;
   margin: auto;
 }
+
 ul {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 30px 30px 30px 30px;
 }
-li{
+
+li {
   list-style: none;
   margin-bottom: 30px;
 }
-.inherited{
+
+.inherited {
 
   font-size: initial;
   text-align: center;
 }
 
-.buttons  {
-display: flex;
-flex-direction: column;
-align-items: stretch;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
 }
+
 .top-Share {
   background-color: #6F1E30;
-  
+
 }
 
 .top-comment {
@@ -202,22 +216,23 @@ align-items: stretch;
 img {
   max-width: 350px;
 }
+
 .displayPosts {
   background-color: #61D9FB;
 }
 
 @media only screen and (max-width: 600px) {
-  .log
-   {
-      width: 100%;
-   }
-  .navbar{
-  background-color: #6F1E30;
-  padding-top: 5px;
-  font-size: 50px;
-  height: 2em;
+  .log {
+    width: 100%;
+  }
 
-  width: 100%;
+  .navbar {
+    background-color: #6F1E30;
+    padding-top: 5px;
+    font-size: 50px;
+    height: 2em;
+
+    width: 100%;
   }
 
   .mob {
