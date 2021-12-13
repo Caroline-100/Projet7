@@ -11,7 +11,7 @@ class LogINorLogOUT extends React.Component {
     }    
     handleclick() {
         this.setState(previusState => {
-            console.log(previusState);
+            localStorage.clear()
             return {isLoggedIn :!previusState.isLoggedIn}
         })
 
