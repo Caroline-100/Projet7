@@ -1,5 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import Nav from "./navbar";
 class SignUp extends React.Component {
   constructor() {
     super();
@@ -47,76 +48,79 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <main className="log">
-        <h3 className='title'>Sign in to your account</h3>
-        <form onSubmit={this.submit}>
-          <div className="form-div">
-            <label htmlFor="name">Email</label>
-            <input
-              type="email"
-              placeholder="Email"
-              className="name"
-              value={this.state.email}
-              name="email"
-              required
-              minLength="4"
-              size="100"
-              onChange={this.handleChange}
-            />
-          </div>
-          {/* form username */}
-          <div className="form-div">
-            <label htmlFor="name">Username</label>
-            <input
-              htmlFor="username"
-              name="username"
-              placeholder="Username"
-              type="username"
-              value={this.state.username}
-              className="username"
-              required
-              minLength="4"
-              size="30"
-              autoComplete="true"
-              onChange={this.handleChange}
-            />
-          </div>
+      <>
+        <Nav />
+        <main className="log">
+          <h3 className='title'>Sign in to your account</h3>
+          <form onSubmit={this.submit}>
+            <div className="form-div">
+              <label htmlFor="name">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                className="name"
+                value={this.state.email}
+                name="email"
+                required
+                minLength="4"
+                size="100"
+                onChange={this.handleChange}
+              />
+            </div>
+            {/* form username */}
+            <div className="form-div">
+              <label htmlFor="name">Username</label>
+              <input
+                htmlFor="username"
+                name="username"
+                placeholder="Username"
+                type="username"
+                value={this.state.username}
+                className="username"
+                required
+                minLength="4"
+                size="30"
+                autoComplete="true"
+                onChange={this.handleChange}
+              />
+            </div>
 
-          <div className="form-div">
-            <label htmlFor="name">Password</label>
-            <input
-              htmlFor="password"
-              name="password"
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
-              className="password"
-              required
-              minLength="4"
-              size="10"
-              autoComplete="true"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="div-btn-valid-register">
+            <div className="form-div">
+              <label htmlFor="name">Password</label>
+              <input
+                htmlFor="password"
+                name="password"
+                placeholder="Password"
+                type="password"
+                value={this.state.password}
+                className="password"
+                required
+                minLength="4"
+                size="10"
+                autoComplete="true"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="div-btn-valid-register">
 
-            <input
-              name="register"
-              onClick={this.switchPage}
-              className="input-Valid"
-              type="submit"
-              value="Valid"
+              <input
+                name="register"
+                onClick={this.switchPage}
+                className="input-Valid"
+                type="submit"
+                value="Valid"
 
-            />
-            {
-              (this.state.password) ?
-                console.log('test')
-                :
-                console.log('else')
-            }
-          </div>
-        </form>
-      </main>
+              />
+              {
+                (this.state.password) ?
+                  console.log('test')
+                  :
+                  console.log('else')
+              }
+            </div>
+          </form>
+        </main>
+      </>
     );
   }
 }

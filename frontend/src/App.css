@@ -8,13 +8,24 @@ body {
   background-color: #6F1E30;
   width: 100%;
   text-align: center;
-  font-size: 5.2em;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+.links {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+a {
+  color: wheat;
+  text-decoration: none;
 }
 
 /*end navbar*/

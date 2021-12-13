@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 // import files components
-// import Nav from "./components/navbar";
 import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import Main from "./components/Main";
@@ -27,7 +26,6 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        {/* <Nav /> */}
         <Switch>
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/LogIn" exact component={LogIn} />

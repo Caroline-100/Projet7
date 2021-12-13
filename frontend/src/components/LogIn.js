@@ -2,6 +2,8 @@
 import React from "react";
 import { Button } from 'react-bootstrap';
 
+import Nav from './navbar'
+
 
 class LogIn extends React.Component {
   constructor() {
@@ -58,60 +60,63 @@ class LogIn extends React.Component {
   render() {
 
     return (
-      <main className="log">
-        <h3 className='title'>Login in to your account</h3>
-        <form onSubmit={this.submit}>
-          <div className="form-div">
-            <label htmlFor="name">Username</label>
-            <input
-              type="username"
-              autoComplete='true'
-              className="name"
-              value={this.state.username}
-              name="username"
-              required
-              minLength="4"
-              size="100"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-div">
-            <label htmlFor="name">Password</label>
-            <input
-              type="password"
-              autoComplete='true'
-              className="name"
-              name="password"
-              value={this.state.password}
-              required
-              minLength="4"
-              size="10"
-              onChange={this.handleChange}
-            />
-          </div>
-          {/* after submit, check
+      <>
+        <Nav />
+        <main className="log">
+          <h3 className='title'>Login in to your account</h3>
+          <form onSubmit={this.submit}>
+            <div className="form-div">
+              <label htmlFor="name">Username</label>
+              <input
+                type="username"
+                autoComplete='true'
+                className="name"
+                value={this.state.username}
+                name="username"
+                required
+                minLength="4"
+                size="100"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-div">
+              <label htmlFor="name">Password</label>
+              <input
+                type="password"
+                autoComplete='true'
+                className="name"
+                name="password"
+                value={this.state.password}
+                required
+                minLength="4"
+                size="10"
+                onChange={this.handleChange}
+              />
+            </div>
+            {/* after submit, check
                if localStorage
                   return  displaypost
               else 
                   return login         
           */}
-          <div className="div-btn-valid-register">
-            <Button variant='success'
-              name="login"
+            <div className="div-btn-valid-register">
+              <Button variant='success'
+                name="login"
 
-              className="input-Valid"
-              type="submit"
-              value="Valid"
-            >Valid</Button>
-            {/* 
+                className="input-Valid"
+                type="submit"
+                value="Valid"
+              >Valid</Button>
+              {/* 
               <Link to='/DisplayPosts'> Valid</Link></Button> */}
-          </div>
-        </form>
-        <p>
-          {this.state.password} ,{this.state.username}
-        </p>
+            </div>
+          </form>
+          <p>
+            {this.state.password} ,{this.state.username}
+          </p>
 
-      </main>
+        </main>
+      </>
     );
   }
 }
