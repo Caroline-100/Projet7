@@ -1,4 +1,4 @@
-const sequelize = require('../databbase/sequelize');
+// const sequelize = require('../databbase/sequelize');
 const People = require('./People');
 const Post = require('./Post');
 const Comments = require('./Comments');
